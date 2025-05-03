@@ -117,7 +117,14 @@ bot.onText(/\/start/, (msg) => {
   const welcome = `🔥 *SEJA BEM-VINDO(A) AO BOT DA FURIA!* 🐈‍⬛🖤
 
 Você pode usar os botões abaixo *ou* comandos por barra como:
-/lineup, /sobre, /resultados, /whatsapp, /infotime, /noticias`;
+
+/start = Ver a lista de comandos novamente e entender como interagir com o bot.
+/lineup = Consultar o line-up atual da equipe FURIA (jogadores titulares, reservas e coach).
+/sobre = Obter informações gerais sobre a FURIA Esports.
+/resultados = Ver os resultados mais recentes dos jogos da FURIA no CS.
+/whatsapp = Falar diretamente com o assistente virtual da FURIA via WhatsApp.
+/infotime = Receber informações detalhadas sobre a equipe FURIA.
+/noticias = Ficar por dentro das últimas notícias sobre a FURIA e o cenário do CS.`;
 
   bot.sendMessage(msg.chat.id, welcome, {
     parse_mode: "Markdown",
@@ -164,18 +171,6 @@ Fale diretamente com o assistente virtual da FURIA via WhatsApp:
 
 💡 O atendimento está em fase *closed beta*, portanto recursos podem ser limitados.`;
     bot.sendMessage(chatId, mensagem, { parse_mode: "Markdown" });
-  } else if (text === "✅ ativar alertas" || text === "/ativaralertas") {
-    chatsComAlertas.add(chatId);
-    bot.sendMessage(
-      chatId,
-      "✅ Você ativou os alertas automáticos de jogos da FURIA!"
-    );
-  } else if (text === "❌ desativar alertas" || text === "/desativaralertas") {
-    chatsComAlertas.delete(chatId);
-    bot.sendMessage(
-      chatId,
-      "❌ Você desativou os alertas automáticos de jogos."
-    );
   } else if (text === "🏅 info do time" || text === "/infotime") {
     const info = await getTeamInfo();
     bot.sendMessage(chatId, info, { parse_mode: "Markdown" });
@@ -186,18 +181,25 @@ Fale diretamente com o assistente virtual da FURIA via WhatsApp:
     text.startsWith("/") &&
     ![
       "/lineup",
+      "/start",
       "/sobre",
       "/resultados",
       "/whatsapp",
-      "/ativaralertas",
-      "/desativaralertas",
       "/infotime",
       "/noticias",
     ].includes(text)
   ) {
     bot.sendMessage(
       chatId,
-      `❌ *Comando não reconhecido: ${text}*\n\n📋 *Use os botões abaixo ou comandos por barra!*`,
+      `❌ *Comando não reconhecido: ${text}*\n\n📋 *Use os botões abaixo ou comandos por barra!*
+
+/start = Ver a lista de comandos novamente e entender como interagir com o bot.
+/lineup = Consultar o line-up atual da equipe FURIA (jogadores titulares, reservas e coach).
+/sobre = Obter informações gerais sobre a FURIA Esports.
+/resultados = Ver os resultados mais recentes dos jogos da FURIA no CS.
+/whatsapp = Falar diretamente com o assistente virtual da FURIA via WhatsApp.
+/infotime = Receber informações detalhadas sobre a equipe FURIA.
+/noticias = Ficar por dentro das últimas notícias sobre a FURIA e o cenário do CS.`,
       {
         parse_mode: "Markdown",
       }
