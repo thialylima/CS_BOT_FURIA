@@ -15,6 +15,7 @@
     "chatbot": "file:",
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "hltv": "^3.5.0",
     "node-fetch": "^3.3.2",
     "node-telegram-bot-api": "^0.66.0"
