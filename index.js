@@ -3,6 +3,7 @@ import * as cheerio from "cheerio";
 import TelegramBot from "node-telegram-bot-api";
 import { HLTV } from "hltv";
 import "dotenv/config";
+import express from "express";
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
@@ -205,4 +206,17 @@ Fale diretamente com o assistente virtual da FURIA via WhatsApp:
       }
     );
   }
+});
+
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Bot da FURIA está rodando!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Servidor express rodando na porta ${PORT}`);
 });
